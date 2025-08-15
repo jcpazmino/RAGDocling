@@ -1,0 +1,21 @@
+services:
+  pg:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: ${DB_USER:-admin}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-admin123}
+      POSTGRES_DB: ${DB_NAME:-ragEmpresarial}
+    ports:
+      - "${DB_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  docling-serve:
+    image: quay.io/docling-project/docling-serve
+    environment:
+      DOCLING_SERVE_ENABLE_UI: "1"
+    ports:
+      - "5001:5001"
+
+volumes:
+  pgdata:

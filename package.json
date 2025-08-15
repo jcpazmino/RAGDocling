@@ -1,0 +1,24 @@
+{
+  "name": "docling-openai-pgvector-demo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev:ingest": "node --env-file=.env --import tsx src/ingest_pgvector.ts",
+    "dev:search": "node --env-file=.env --import tsx src/search.ts",
+    "dev:report": "node --env-file=.env --import tsx src/report.ts"
+  },
+  "dependencies": {
+    "docling-sdk": "^1.0.0",
+    "dotenv": "^16.4.5",
+    "openai": "^4.57.0",
+    "pdfkit": "^0.15.0",
+    "pg": "^8.11.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.10",
+    "@types/pg": "^8.15.5",
+    "tsx": "^4.16.0",
+    "typescript": "^5.5.4"
+  }
+}
