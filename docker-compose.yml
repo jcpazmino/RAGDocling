@@ -10,12 +10,15 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  docling-serve:
-    image: quay.io/docling-project/docling-serve
+  docling:
+    image: quay.io/docling-project/docling-serve:latest
+    container_name: docling
     environment:
-      DOCLING_SERVE_ENABLE_UI: "1"
+      DOCLING_SERVE_ENABLE_UI: "1"   # habilita la UI en /ui
+      # OMP_NUM_THREADS: "4"         # (opcional) limitar hilos CPU (doc oficial)
     ports:
       - "5001:5001"
+    restart: unless-stopped           # lo mantiene “permanente”
 
 volumes:
   pgdata:
